@@ -291,7 +291,8 @@ for hour in range(0,25):
         hour = "0"+str(hour)
     else:
         hour = str(hour) 
-        schedule.every().day.at(f"{hour}:00").do(execute_trade)
+        
+    schedule.every().day.at(f"{hour}:00").do(execute_trade)
     
     # 스케줄 루프 실행
     while True:
