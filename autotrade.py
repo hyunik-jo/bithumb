@@ -284,10 +284,12 @@ def run_scheduler():
     print("스케줄링된 실행 시간: 매일 09:00, 15:00, 21:00")
     
     # 매일 특정 시간에 작업 실행하도록 스케줄링
-    schedule.every().hour.at(":40").do(execute_trade)
-    schedule.every().day.at("09:00").do(execute_trade)
-    schedule.every().day.at("15:00").do(execute_trade)
-    schedule.every().day.at("21:00").do(execute_trade)
+for hour in range(0,25):
+    if len(str(hour)) ==1:
+        hour = "0"+str(hour)
+    else:
+        hour = str(hour) 
+        schedule.every().day.at(f"{hour}:00").do(execute_trade)
     
     # 스케줄 루프 실행
     while True:
