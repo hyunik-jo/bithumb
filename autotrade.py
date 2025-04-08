@@ -179,6 +179,7 @@ def ai_trading():
             }
         ],
         response_format={"type": "json_object"}
+
     )
 
     # AI 응답 처리
@@ -279,10 +280,11 @@ def run_scheduler():
     init_db()
     
     print("비트코인 자동 트레이딩 시스템 시작...")
+    print("스케줄링된 실행 시간: 매시간 :40 분")
     print("스케줄링된 실행 시간: 매일 09:00, 15:00, 21:00")
     
     # 매일 특정 시간에 작업 실행하도록 스케줄링
-    schedule.every().hour.at(":00").do(execute_trade)
+    schedule.every().hour.at(":40").do(execute_trade)
     schedule.every().day.at("09:00").do(execute_trade)
     schedule.every().day.at("15:00").do(execute_trade)
     schedule.every().day.at("21:00").do(execute_trade)
